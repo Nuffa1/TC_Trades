@@ -1,0 +1,66 @@
+// Definitions
+
+Sector rotation strategy that shifts investment capital among different sectors of the market(tech,energy,finance) based on expectations about each sector.
+
+Sectors are standardized groups of companies with similar business activities. Examples:
+
+Technology
+
+Industrials
+
+Materials
+
+Utilities
+
+Financials
+
+Consumer Discretionary
+
+Consumer Staples
+
+Healthcare
+
+A signal is any measurable input used to rank or score sectors.
+Common signal categories:
+
+Price-based (momentum, trend strength, volatility)
+
+Macro-based (interest rates, PMI, inflation)
+
+Fundamental (earnings revisions, valuation ratios)
+
+Risk-based (correlation, drawdown)
+
+The program will combine signals -> produce a score -> rank sectors.
+
+A statistical / algorithmic model that produces a ranking for all sectors based on your signals.
+
+Example:
+
+Score = 0.4 * Momentum + 0.3 * Volatility + 0.3 * MacroStrength
+
+
+The model’s output determines which sectors you invest in.
+
+Once sectors are ranked, you need rules for:
+
+How many sectors to hold
+
+Weighting (equal weight, score-weighted, risk-parity)
+
+Rebalancing frequency (weekly, monthly, quarterly)
+
+A historical simulation that tests how your sector-rotation strategy would have performed.
+Key components:
+
+Transaction costs
+
+Slippage
+
+Rebalancing rules
+
+Out-of-sample validation
+
+Robustness tests (e.g., noise injection, walk-forward analysis)
+
+
