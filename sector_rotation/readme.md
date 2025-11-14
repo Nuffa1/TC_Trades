@@ -28,7 +28,7 @@ Used to detect the regime:
 
 ### **Sector-Regime Mapping**
 
-Each regime has sectors that tend to outperform (e.g., Tech in recovery, Staples in recession).
+Each regime has sectors that tend to outperform 
 
 ### **Asset-Level Confirmation**
 
