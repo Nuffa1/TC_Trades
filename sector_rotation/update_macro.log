@@ -1,0 +1,54 @@
+2025-11-15 15:33:01,887 | INFO | Starting Yahoo macro update...
+2025-11-15 15:33:01,888 | INFO | Downloading consumer from Yahoo (UMCSENT)
+2025-11-15 15:33:04,291 | ERROR | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: UMCSENT"}}}
+2025-11-15 15:33:04,765 | ERROR | 
+1 Failed download:
+2025-11-15 15:33:04,765 | ERROR | ['UMCSENT']: YFPricesMissingError('possibly delisted; no price data found  (period=20y) (Yahoo error = "No data found, symbol may be delisted")')
+2025-11-15 15:33:04,801 | ERROR | Could not download consumer: Failed to download UMCSENT
+2025-11-15 15:33:04,801 | INFO | Downloading labor from Yahoo (ICSA)
+2025-11-15 15:33:05,650 | ERROR | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ICSA"}}}
+2025-11-15 15:33:06,070 | ERROR | 
+1 Failed download:
+2025-11-15 15:33:06,070 | ERROR | ['ICSA']: YFPricesMissingError('possibly delisted; no price data found  (period=20y) (Yahoo error = "No data found, symbol may be delisted")')
+2025-11-15 15:33:06,073 | ERROR | Could not download labor: Failed to download ICSA
+2025-11-15 15:33:06,073 | INFO | Downloading inflation from Yahoo (CPIAUCSL)
+2025-11-15 15:33:06,869 | ERROR | 
+1 Failed download:
+2025-11-15 15:33:06,869 | ERROR | ['CPIAUCSL']: YFPricesMissingError('possibly delisted; no price data found  (period=20y) (Yahoo error = "No data found, symbol may be delisted")')
+2025-11-15 15:33:06,871 | ERROR | Could not download inflation: Failed to download CPIAUCSL
+2025-11-15 15:33:06,871 | INFO | Downloading credit from Yahoo (BAMLH0A0HYM2)
+2025-11-15 15:33:07,146 | ERROR | 
+1 Failed download:
+2025-11-15 15:33:07,147 | ERROR | ['']: ValueError('Empty ticker name')
+2025-11-15 15:33:07,151 | ERROR | Could not download credit: Failed to download BAMLH0A0HYM2
+2025-11-15 15:33:07,151 | CRITICAL | No macro series downloaded – aborting.
+2025-11-15 15:34:34,022 | INFO | Starting Yahoo macro update...
+2025-11-15 15:34:34,022 | INFO | Downloading consumer from Yahoo (XRT)
+2025-11-15 15:34:38,457 | ERROR | Could not download consumer: 'str' object is not callable
+2025-11-15 15:34:38,457 | INFO | Downloading labor from Yahoo (PAYEMS)
+2025-11-15 15:34:39,112 | ERROR | HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: PAYEMS"}}}
+2025-11-15 15:34:39,504 | ERROR | 
+1 Failed download:
+2025-11-15 15:34:39,504 | ERROR | ['PAYEMS']: YFPricesMissingError('possibly delisted; no price data found  (period=20y) (Yahoo error = "No data found, symbol may be delisted")')
+2025-11-15 15:34:39,506 | ERROR | Could not download labor: Failed to download PAYEMS
+2025-11-15 15:34:39,507 | INFO | Downloading inflation from Yahoo (TIP)
+2025-11-15 15:34:40,132 | ERROR | Could not download inflation: 'str' object is not callable
+2025-11-15 15:34:40,132 | INFO | Downloading credit from Yahoo (HYG)
+2025-11-15 15:34:40,707 | ERROR | Could not download credit: 'str' object is not callable
+2025-11-15 15:34:40,708 | CRITICAL | No macro series downloaded – aborting.
+2025-11-15 15:36:26,801 | INFO | Starting Yahoo macro update...
+2025-11-15 15:36:26,801 | INFO | Downloading consumer from Yahoo (XRT)
+2025-11-15 15:36:30,595 | ERROR | Could not download consumer: 'str' object is not callable
+2025-11-15 15:36:30,595 | INFO | Downloading labor from Yahoo (VTI)
+2025-11-15 15:36:32,342 | ERROR | Could not download labor: 'str' object is not callable
+2025-11-15 15:36:32,343 | INFO | Downloading inflation from Yahoo (TIP)
+2025-11-15 15:36:32,836 | ERROR | Could not download inflation: 'str' object is not callable
+2025-11-15 15:36:32,837 | INFO | Downloading credit from Yahoo (HYG)
+2025-11-15 15:36:34,171 | ERROR | Could not download credit: 'str' object is not callable
+2025-11-15 15:36:34,171 | CRITICAL | No macro series downloaded – aborting.
+2025-11-15 15:40:33,142 | INFO | Starting Yahoo macro update...
+2025-11-15 15:40:33,142 | INFO | Downloading consumer (XRT)...
+2025-11-15 15:40:34,635 | INFO | Downloading labor (VTI)...
+2025-11-15 15:40:35,267 | INFO | Downloading inflation (TIP)...
+2025-11-15 15:40:35,672 | INFO | Downloading credit (HYG)...
+2025-11-15 15:40:36,223 | INFO | macro.csv updated successfully.
