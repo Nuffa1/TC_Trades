@@ -49,7 +49,7 @@ Rules for:
 
 ---
 
-## 🎯 Goals
+##  Goals
 
 * **Detect macro regime** using a composite of economic indicators.
 * **Map regimes to sectors** based on historical performance.
