@@ -2,7 +2,7 @@
 # **Macro-Driven Sector Rotation Framework**
 
 A **macro-based sector rotation** system that detects the current **economic regime** using economic indicators, maps regimes to historically strong sectors, applies **asset-level confirmation filters**, and builds a rules-driven sector portfolio.
-The entire workflow is automated: **data → regime → sector → portfolio → backtest**.
+The entire workflow is automated
 
 ---
 
@@ -218,4 +218,4 @@ This is the main script to run a full backtest.
 * Automate the entire pipeline for continuous updating
 
 
-Just tell me what style you prefer.
+
