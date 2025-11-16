@@ -1,63 +1,211 @@
+Macro-Driven Sector Rotation Framework
+
+It detects the current economic regime from macroeconomic indicators, allocates to historically advantaged equity sectors, applies asset-level confirmation signals, and executes a rules-based portfolio construction & backtest pipeline.
+
+This repository contains:
+
+A macro regime classifier
+
+A sector–regime mapping engine
+
+Momentum, volatility, and relative-strength filters
+
+A portfolio allocator with risk controls
+
+A full backtester with rebalance logs and equity curve
+
+End-to-end pipeline automation
+
+1. Conceptual Overview
+
+The goal of this framework is to translate macroeconomic conditions into sector-level investment decisions.
+
+Pipeline Flow
+
+Macro data ingestion → consumer, labor, inflation, credit
+
+Composite macro scoring → growth, inflation pressure, financial stress
+
+Economic regime classification
+
+Sector selection based on historical outperformance
+
+Asset-level filters such as momentum, volatility, and relative strength
+
+Portfolio construction with weight caps & monthly rebalancing
+
+Backtest simulation: turnover, costs, equity curve, and trade logs
+
+2. Economic Regimes
+
+The framework uses five major phases of the macro cycle:
+
+Early Expansion
+
+Mid Expansion
+
+Late Expansion
+
+Recession
+
+Recovery
+
+Regimes are identified via composite macro signals (growth, inflation pressure, stress) and rule-based quantile thresholds
+(see implementation in MacroRegimeDetector).
 
 
-##  Overview
+sector
 
-A **macro-driven sector rotation** framework that identifies the current **economic regime** using macro indicators, then invests in sectors that historically outperform in that regime.
----
+3. Macroeconomic Indicators
 
-##  Key Definitions
+The system consumes four primary indicator groups:
 
-### **Economic Regime**
+Consumer activity (e.g., XRT, retail spending)
 
-Phases of the market cycle:
+Labor market (e.g., employment, claims, wage growth)
 
-* Early Expansion
-* Mid Expansion
-* Late Expansion
-* Recession
-* Recovery
+Inflation & rates (CPI, TIP)
 
-### **Macroeconomic Indicators**
+Credit conditions (spreads, lending standards, HYG)
 
-Used to detect the regime:
+The pipeline normalizes these using rolling/expanding z-scores, computes quantile thresholds, and aggregates them into composite growth, stress, and inflation signals.
 
-* Consumer data (credit cards, spending, mortgages)
-* Labor (claims, wage growth)
-* Inflation & rates (CPI, rate cuts/hikes, yield curve)
-* Credit conditions (spreads, lending standards)
 
-### **Sector-Regime Mapping**
+sector
 
-Each regime has sectors that tend to outperform 
 
-### **Asset-Level Confirmation**
+4. Regime Classification
 
-Signals applied after regime detection:
+The regime detector:
 
-* Momentum
-* Volatility
-* Relative strength
+Normalizes all macro inputs
 
-### **Portfolio Construction**
+Computes composite growth, inflation, and stress scores
 
-Rules for:
+Applies rolling & expanding quantile rules
 
-* Sector selection
-* Weighting
-* Rebalancing
-* Risk controls
+Assigns a regime for every timestamp
 
----
+Optionally applies mode smoothing to reduce noise
 
-##  Goals
-
-* **Detect macro regime** using a composite of economic indicators.
-* **Map regimes to sectors** based on historical performance.
-* **Use asset-level filters** to confirm sector strength.
-* **Build a diversified portfolio** aligned with the current regime.
-* **Backtest the full pipeline** with realistic execution assumptions.
-* **Automate data → regime → sector → portfolio workflow.**
+The result is a clean timeseries of macro regimes saved to regimes.csv.
 
 
 
+5. Sector–Regime Mapping
 
+Each economic regime maps to a set of historically advantaged sectors:
+
+Regime	Sectors
+Early Expansion	XLY, XLF, XLI, XLK
+Mid Expansion	XLK, XLI, XLB
+Late Expansion	XLE, XLF, XLP, XLU
+Recession	XLP, XLU, XLV
+Recovery	XLY, XLI, XLF
+
+These drive the initial universe of candidates at each rebalance.
+
+
+6. Asset-Level Confirmation Filters
+
+Before selecting final investable tickers, the system applies:
+
+Momentum
+
+Long-term price momentum (126-day lookback)
+
+Volatility Filter
+
+Rejects assets above the 80th volatility percentile (63-day window)
+
+Relative Strength
+
+Momentum vs. a cross-sector benchmark
+
+Ranking & Selection
+
+Momentum + relative strength combined into a weighted score.
+
+These ensure the portfolio emphasizes leaders within favored sectors.
+
+
+
+7. Portfolio Construction
+
+Portfolio construction follows:
+
+Equal-weighting with per-sector caps
+
+Monthly rebalancing
+
+Transaction cost modeling (default 5 bps)
+
+Normalization after ticker removals or missing data
+
+
+Weights and sector choices for each rebalance are stored in trade_log.csv.
+
+8. Backtesting Engine
+
+The backtester simulates:
+
+Monthly rebalances
+
+Daily returns using sector ETF price history
+
+Turnover & transaction costs
+
+Full equity curve
+
+Detailed trade logs including regimes, selected assets, sector availability, and turnover
+
+Key components implemented in Backtester include:
+
+Rebalance scheduling
+
+Trade logging
+
+Turnover and cost deductions
+
+Equity curve generation
+
+
+
+Outputs include:
+
+equity_curve.csv
+
+trade_log.csv
+
+regimes.csv
+
+A trade-analysis script is provided to summarize results:
+
+
+analyze_trades
+
+9. Automation Script
+
+backtest.py performs:
+
+Load/update macro data
+
+Download all sector ETF prices
+
+Align price + macro dates
+
+Run the full pipeline
+
+Save all outputs
+
+Display the final 10 days of the equity curve and all trades
+
+backtest
+
+10. Outputs & Files
+File	Description
+macro.csv	macro indicator history
+equity_curve.csv	final equity curve generated by backtester
+regimes.csv	detected economic regime for each date
+trade_log.csv	every rebalance: regime, tickers, weights, turnover
+update_macro.log	macro update download log
